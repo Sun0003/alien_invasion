@@ -2,6 +2,7 @@ import sys
 import pygame
 
 from settings import Settings
+from ship import Ship
 
 def run_game():
     pygame.init
@@ -9,6 +10,9 @@ def run_game():
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_wight,ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
+
+    #Make a ship
+    ship = Ship(screen)
 
     #vong lap
     while True:
@@ -20,7 +24,7 @@ def run_game():
 
         # background color
         screen.fill(ai_settings.bg_color)
-        
+        ship.blitme()
         #luon cap nhat trang thai moi nhat
         pygame.display.flip()
 
