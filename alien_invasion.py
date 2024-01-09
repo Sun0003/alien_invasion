@@ -4,26 +4,24 @@ import pygame
 from settings import Settings
 
 def run_game():
-    #Khoi tao game va tao doi tuong screen.
-    pygame.init()
-    screen = pygame.display.set_mode((1200, 800))
+    pygame.init
+    #cua so game tu settings
+    ai_settings = Settings()
+    screen = pygame.display.set_mode((ai_settings.screen_wight,ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
-    
-    # tao mau game
-    bg_color = (230, 230, 230)
-    # Vong lap chinh trong game
+
+    #vong lap
     while True:
-    	#watch cho ma va su kien
-    	for event in pygame.event.get():
-    	    if event.type == pygame.QUIT:
-    	        sys.exit()
-    	        
-    	screen.fill(bg_color)
-    	
-    	#ve man hinh
-    	pygame.display.flip()
-    	
+
+        #lenh thoat
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+        # background color
+        screen.fill(ai_settings.bg_color)
+        
+        #luon cap nhat trang thai moi nhat
+        pygame.display.flip()
+
 run_game()
-    	
-    
-    
