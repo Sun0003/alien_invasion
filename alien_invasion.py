@@ -1,8 +1,8 @@
-import sys
 import pygame
 
 from settings import Settings
 from ship import Ship
+import game_functions as gf
 
 def run_game():
     pygame.init
@@ -10,22 +10,14 @@ def run_game():
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_wight,ai_settings.screen_height))
     pygame.display.set_caption("Alien Invasion")
-
     #Make a ship
-    ship = Ship(screen)
-
+    ship = Ship(screen,ai_settings)
     #vong lap
     while True:
-
-        #lenh thoat
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-
-        # background color
-        screen.fill(ai_settings.bg_color)
-        ship.blitme()
-        #luon cap nhat trang thai moi nhat
-        pygame.display.flip()
+        #lenh thoat va cap nhat doi tuong
+        gf.check_events(ship)
+        ship.update()
+        # background color #luon cap nhat trang thai moi nhat
+        gf.update_screen(ai_settings, screen, ship)
 
 run_game()
