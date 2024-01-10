@@ -2,6 +2,7 @@ import pygame
 
 from settings import Settings
 from ship import Ship
+from alien import Alien
 import game_functions as gf
 from pygame.sprite import Group
 
@@ -15,8 +16,12 @@ def run_game():
 
     #Make a ship
     ship = Ship(screen,ai_settings)
+    #Make group alien
+    aliens = Group()
     #Make group bullet
     bullets = Group()
+
+    gf.create_fleet(ai_settings, screen, aliens)
 
     #vong lap
     while True:
@@ -27,6 +32,6 @@ def run_game():
         gf.update_bullets(bullets)
 
         # background color #luon cap nhat trang thai moi nhat
-        gf.update_screen(ai_settings, screen, ship, bullets)
+        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 
 run_game()
